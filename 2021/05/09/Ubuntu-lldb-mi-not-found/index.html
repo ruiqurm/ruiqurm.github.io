@@ -23,20 +23,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="折腾了很久，写出来的博客可用性还是太差了。现阶段还是先用hexo比较方便。 插件 next主题 这里比较坑的是，hexo-next的主页好久没更新了（可能是因为维护的人换了），主页上链接是旧版的，在新的hexo下生成出来就只有模板。因此要用https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-theme-next 下的资源。 12$ cd hexo$ git clone h">
+<meta name="description" content="最近把gcc换成clang，调试的时候vscode提示lldb-mi不存在。 我顺着路径(&#x2F;usr&#x2F;bin&#x2F;lldb-mi)去看了一下，发现根本就没有lldb-mi-10的文件。后来搜了一下才发现lldb-10不再顺便编译出lldb-mi，需要我们自己去编译。在一个issue中，一个大佬([@Wing Chau](https:&#x2F;&#x2F;github.com&#x2F;iamWing))直接给了解决方案。我把它翻">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo博客搭建">
-<meta property="og:url" content="http://example.com/2021/01/31/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:title" content="Ubuntu lldb-mi not found">
+<meta property="og:url" content="http://example.com/2021/05/09/Ubuntu-lldb-mi-not-found/index.html">
 <meta property="og:site_name" content="ruiqurm的博客">
-<meta property="og:description" content="折腾了很久，写出来的博客可用性还是太差了。现阶段还是先用hexo比较方便。 插件 next主题 这里比较坑的是，hexo-next的主页好久没更新了（可能是因为维护的人换了），主页上链接是旧版的，在新的hexo下生成出来就只有模板。因此要用https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-theme-next 下的资源。 12$ cd hexo$ git clone h">
+<meta property="og:description" content="最近把gcc换成clang，调试的时候vscode提示lldb-mi不存在。 我顺着路径(&#x2F;usr&#x2F;bin&#x2F;lldb-mi)去看了一下，发现根本就没有lldb-mi-10的文件。后来搜了一下才发现lldb-10不再顺便编译出lldb-mi，需要我们自己去编译。在一个issue中，一个大佬([@Wing Chau](https:&#x2F;&#x2F;github.com&#x2F;iamWing))直接给了解决方案。我把它翻">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-31T03:08:48.000Z">
-<meta property="article:modified_time" content="2021-01-31T10:09:17.370Z">
+<meta property="article:published_time" content="2021-05-09T15:47:08.000Z">
+<meta property="article:modified_time" content="2021-05-10T02:50:05.185Z">
 <meta property="article:author" content="ruiqurm">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/01/31/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+<link rel="canonical" href="http://example.com/2021/05/09/Ubuntu-lldb-mi-not-found/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>hexo博客搭建 | ruiqurm的博客</title>
+<title>Ubuntu lldb-mi not found | ruiqurm的博客</title>
   
 
 
@@ -134,7 +134,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -147,7 +147,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#next%E4%B8%BB%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">next主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo-deployer-git"><span class="nav-number">1.2.</span> <span class="nav-text">hexo-deployer-git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo-renderer-pandoc"><span class="nav-number">1.3.</span> <span class="nav-text">hexo-renderer-pandoc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%BA%8A"><span class="nav-number">1.4.</span> <span class="nav-text">图床</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -208,7 +207,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/09/Ubuntu-lldb-mi-not-found/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -221,7 +220,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          hexo博客搭建
+          Ubuntu lldb-mi not found
         </h1>
 
         <div class="post-meta-container">
@@ -231,10 +230,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-01-31 11:08:48 / 修改时间：18:09:17" itemprop="dateCreated datePublished" datetime="2021-01-31T11:08:48+08:00">2021-01-31</time>
+      <time title="创建时间：2021-05-09 23:47:08" itemprop="dateCreated datePublished" datetime="2021-05-09T23:47:08+08:00">2021-05-09</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-05-10 10:50:05" itemprop="dateModified" datetime="2021-05-10T10:50:05+08:00">2021-05-10</time>
+      </span>
 
   
 </div>
@@ -246,21 +251,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>折腾了很久，写出来的博客可用性还是太差了。现阶段还是先用hexo比较方便。</p>
-<h2 id="插件">插件</h2>
-<h3 id="next主题">next主题</h3>
-<p>这里比较坑的是，hexo-next的主页好久没更新了（可能是因为维护的人换了），主页上链接是旧版的，在新的hexo下生成出来就只有模板。因此要用https://github.com/theme-next/hexo-theme-next 下的资源。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> hexo</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<h3 id="hexo-deployer-git">hexo-deployer-git</h3>
-<h3 id="hexo-renderer-pandoc">hexo-renderer-pandoc</h3>
-<p>用来渲染tex的。</p>
-<p>配置参见<a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/2020/01/30/5e329e197e2f6/">Hexo+Next: 使用Latex公式</a>。需要提前装好<code>pandoc</code></p>
-<p>修改配置文件是<strong>next主题</strong>里的<code>_config.yml</code> 。<code>per_page</code> 关了不会每页都渲染，只有加了<code>mathjax:true</code>的才会渲染。</p>
-<h3 id="图床">图床</h3>
-<p>一开始想直接用<code>hexo-asset-image</code>。后面发现这个项目好久没更新了，并且实际用起来也不是那么方便，每个markdown都有一个<code>asset</code>文件夹。</p>
-<p>专业图床有很多，比如七牛云，腾讯云COS，sm.ms</p>
-<p>免费的图床sm.ms可以来存不重要图片。</p>
-<p>国内的专业图床都要域名备案。七牛云可以试用一个月，我试了一下picgo+七牛云，感觉还是非常方便的。但是这个备案非常麻烦，而且目前我也没有长期使用的云服务器来备案，因此还是用github搭建图床吧。用gitee也可以，但是为了避免一些问题，还是选择比较稳定的github吧。github图床搭建只需要生成一个token，然后在picgo上面配置这个token即可。github加载图片还是比较慢的，如果要加速，还是需要CDN。当然github上面放图床不太好，以后再迁移到云服务器上吧。</p>
+        <p>最近把<code>gcc</code>换成<code>clang</code>，调试的时候vscode提示<code>lldb-mi</code>不存在。</p>
+<p>我顺着路径(<code>/usr/bin/lldb-mi</code>)去看了一下，发现根本就没有<code>lldb-mi-10</code>的文件。后来搜了一下才发现<code>lldb-10</code>不再顺便编译出<code>lldb-mi</code>，需要我们自己去编译。在一个issue中，一个大佬(<span class="citation" data-cites="Wing">[@Wing Chau]</span>(https://github.com/iamWing))直接给了解决方案。我把它翻译下来整理如下：</p>
+<ol type="1">
+<li>安装相关的包</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install clang-10 llvm-10-dev liblldb-10-dev</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>设置软链接。如果之前装过这些，前三个会提示已存在。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s &#x2F;usr&#x2F;bin&#x2F;clang-10 &#x2F;usr&#x2F;bin&#x2F;clang</span><br><span class="line">sudo ln -s &#x2F;usr&#x2F;bin&#x2F;clang++-10 &#x2F;usr&#x2F;bin&#x2F;clang++</span><br><span class="line">sudo ln -s &#x2F;usr&#x2F;bin&#x2F;lldb-10 &#x2F;usr&#x2F;bin&#x2F;lldb</span><br><span class="line"># This one is a bit strange but VSCode only looks for the name &#96;lldb-server-10.0.0&#96; but not &#96;lldb-server-10&#96;</span><br><span class="line">sudo ln -s &#x2F;usr&#x2F;bin&#x2F;lldb-server-10 &#x2F;usr&#x2F;bin&#x2F;lldb-server-10.0.0</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>编译<code>lldb-mi</code>。同样，如果之前装过，<code>/usr/bin/</code>下会有一个<code>lldb-mi</code>。需要手动删掉</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;lldb-tools&#x2F;lldb-mi.git</span><br><span class="line">cd lldb-mi</span><br><span class="line">cmake .</span><br><span class="line">cmake --build .</span><br><span class="line">&#x2F;&#x2F;sudo rm &#x2F;usr&#x2F;bin&#x2F;lldb-mi</span><br><span class="line">sudo cp src&#x2F;lldb-mi &#x2F;usr&#x2F;bin&#x2F;lldb-mi</span><br></pre></td></tr></table></figure>
+<p>参考：https://github.com/microsoft/vscode-cpptools/issues/5415#issuecomment-662603085</p>
 
     </div>
 
@@ -274,14 +279,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/01/31/test/" rel="prev" title="test">
-                  <i class="fa fa-chevron-left"></i> test
+                <a href="/2021/05/03/%E6%89%8B%E6%9C%BA%E7%AB%AF%E4%BD%BF%E7%94%A8fidder%E6%8A%93%E5%8C%85/" rel="prev" title="手机端使用fidder抓包">
+                  <i class="fa fa-chevron-left"></i> 手机端使用fidder抓包
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/01/cacheLab/" rel="next" title="csapp cache lab">
-                  csapp cache lab <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
